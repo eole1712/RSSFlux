@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="fluxElementViewPane" prefHeight="100.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="nameLabel" layoutX="100.0" layoutY="14.0" prefHeight="16.0" prefWidth="253.0" text="Nom de l'article" textFill="#e74c3c" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="Heiti TC Light" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="descriptionLabel" layoutX="113.0" layoutY="34.0" prefHeight="51.0" prefWidth="581.0" text="Description de l'article" textFill="#7f8c8d" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="Heiti TC Light" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

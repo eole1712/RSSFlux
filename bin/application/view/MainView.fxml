@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #e74c3c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FluxOverviewController">
+   <children>
+      <ListView fx:id="fluxList" layoutX="208.0" prefHeight="700.0" prefWidth="790.0" style="-fx-border-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Sphere layoutX="93.0" layoutY="197.0" radius="0.0" />
+      <Circle fill="WHITE" layoutX="168.0" layoutY="35.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="44.0" prefWidth="191.0" text="ULTIMATE" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Heiti TC Light" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="145.0" layoutY="14.0" prefHeight="44.0" prefWidth="61.0" text="RSS" textAlignment="CENTER" textFill="#e74c3c">
+         <font>
+            <Font name="Heiti TC Light" size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
