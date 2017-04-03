@@ -1,27 +1,34 @@
 package application;
 
-import java.io.IOException;
-
 import application.model.FluxElement;
+import application.model.Feed;
+import application.model.User;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
-
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    public User loggedUser;
+    private static MainApp instance;
 
     private ObservableList<FluxElement> fluxList = FXCollections.observableArrayList();
+    private ObservableList<Feed> feedList = FXCollections.observableArrayList();
+
 
     public MainApp() {
+        instance = this;
     	fluxList.addAll(
     		new FluxElement(
     			"A Londres, une attaque touche un symbole de la démocratie britannique",
@@ -44,30 +51,18 @@ public class MainApp extends Application {
         return fluxList;
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("ULTIMATE RSS");
-
-        try {
-            // Load the root layout from the fxml file
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            // Exception gets thrown if the fxml file could not be loaded
-            e.printStackTrace();
-        }
-
-        showFluxOverview();
+    public ObservableList<Feed> getFeedList() {
+        return feedList;
     }
 
-    /**
-     * Returns the main stage.
-     * @return
-     */
+    public void addFeedList(Feed feed) {
+        feedList.add(feed);
+    }
+    
+    public void removeFeedList(Feed feed) {
+        feedList.remove(feed);
+    }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -75,21 +70,62 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    public void showFluxOverview() {
+    
+    public static MainApp getInstance() {
+        return instance;
+    }
+        
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+    
+    private Parent replaceSceneContent(String fxml) throws Exception {
+        Parent page = (Parent) FXMLLoader.load(MainApp.class.getResource(fxml), null, new JavaFXBuilderFactory());
+        rootLayout.setCenter(page);
+        
+        return page;
+    }
+    
+    public void gotoFluxOverview() {
         try {
-            // Load the fxml file and set into the center of the main layout
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/MainView.fxml"));
-            AnchorPane overviewPage = (AnchorPane) loader.load();
-            rootLayout.setCenter(overviewPage);
+            replaceSceneContent("view/MainView.fxml");
+        } catch (Exception ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-            // Give the controller access to the main app
-            FluxOverviewController controller = loader.getController();
-            controller.setMainApp(this);
+    public void gotoLogin() {
+        try {
+            replaceSceneContent("view/LoginView.fxml");
+        } catch (Exception ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+  
+    public boolean userLogging(String userId, String password){
+        if (Authenticator.validate(userId, password)) {
+            loggedUser = User.of(userId);
+            gotoFluxOverview();
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        } catch (IOException e) {
-            // Exception gets thrown if the fxml file could not be loaded
-            e.printStackTrace();
+    @Override
+    public void start(Stage primaryStage) {
+        try {
+            this.primaryStage = primaryStage;
+            this.primaryStage.setTitle("ULTIMATE RSS");
+            // Load the root layout from the fxml file
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            gotoLogin();
+            primaryStage.show();
+        } catch (Exception ex) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="SettingsFeedViewPane" prefHeight="26.0" prefWidth="296.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label fx:id="urlLabel" layoutX="113.0" layoutY="34.0" prefHeight="51.0" prefWidth="581.0" text="Url" textFill="#7f8c8d" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="35.0" />
+<!--       <Button layoutX="252.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleDelete" text="X" />
+ -->   </children>
+</AnchorPane>

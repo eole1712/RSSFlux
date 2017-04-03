@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.5" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+   <items>
+      <AnchorPane id="Login" prefHeight="700.0" prefWidth="1000.0">
+          <children>
+            <Label layoutX="137.0" layoutY="173.0" prefHeight="15.0" text="Connexion">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Label>
+              <TextField fx:id="userId" alignment="CENTER" layoutX="47.0" layoutY="279.0" onAction="#processLogin" prefHeight="50.0" prefWidth="413.0" promptText="Nom d'utilisateur" />
+              <PasswordField fx:id="password" alignment="CENTER" layoutX="47.0" layoutY="378.0" onAction="#processLogin" prefHeight="50.0" prefWidth="413.0" promptText="Mot de passe" />
+              <Button fx:id="login" defaultButton="true" layoutX="192.0" layoutY="485.0" onAction="#processLogin" prefHeight="40.0" prefWidth="123.0" text="Connexion" />
+              <Label fx:id="errorMessage" layoutX="94.0" layoutY="562.0" prefHeight="28.0" prefWidth="413.0" textFill="RED" />
+          </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="126.0" layoutY="137.0" prefHeight="15.0" text="Inscription">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER" layoutX="35.0" layoutY="232.0" prefHeight="50.0" prefWidth="413.0" promptText="Nom d'utilisateur" />
+            <TextField  alignment="CENTER" layoutX="35.0" layoutY="304.0" prefHeight="50.0" prefWidth="413.0" promptText="Email" />
+            <PasswordField alignment="CENTER" layoutX="35.0" layoutY="371.0" prefHeight="50.0" prefWidth="413.0" promptText="Mot de passe" />
+            <PasswordField alignment="CENTER" layoutX="35.0" layoutY="439.0" prefHeight="50.0" prefWidth="413.0" promptText="Vérification du mot de passe" />
+            <Button defaultButton="true" layoutX="180.0" layoutY="521.0" prefHeight="40.0" prefWidth="123.0" text="Inscription" />
+            <Label layoutX="35.0" layoutY="599.0" prefHeight="28.0" prefWidth="413.0" textFill="RED" />
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>

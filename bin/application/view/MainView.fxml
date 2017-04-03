@@ -24,5 +24,6 @@
             <Font name="Heiti TC Light" size="28.0" />
          </font>
       </Label>
+      <Button layoutX="62.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleSettings" text="Settings" />
    </children>
 </AnchorPane>
